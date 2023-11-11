@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .accordion {
+            background-color: #fff;
+            color: #003300;
+            cursor: pointer;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: medium;
+            transition: 0.4s;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .active,
+        .accordion:hover {
+            background-color: #003300;
+            color: #fff;
+            font-size: medium;
+            font-weight: bold;
+        }
+        .accordion:after {
+            content: '\002B';
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        .active:after {
+            content: "\2212";
+            color: #fff;
+        }
+        .panel {
+            padding: 0 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .colunaPrato {
+            float: left;
+            width: 85%;
+            padding: 0 10px;
+            background-color: #fff;
+            color: #003300;
+        }
+        .colunaPreco {
+            float: left;
+            width: 15%;
+            padding: 0 5px;
+            background-color: #fff;
+            color: #003300;
+        }
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            padding: 0;
+        }
+        .logo {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .prato {
+            text-align: left;
+            font-size: medium;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .descricao {
+            text-align: left;
+            font-size: small;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: justify;
+        }
+        .preco {
+            text-align: right;
+            font-size: medium;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .navbar {   
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #FFF;
+        }
+        /* Links inside the navbar */
+        .navbar a {
+            float: center;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+
+        .main {        
+            margin-top: 120px;
+        }     
+
+        /* WhatsApp Button */
+        .floatWhatsapp{
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:60px;
+            background-color:#003300;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+            font-size:30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index:100;
+        }
+
+        .floatInstagram{
+            position:fixed;
+            width:60px;
+            height:60px;
+            bottom:40px;
+            right:130px;
+            background-color:#003300;
+            color:#FFF;
+            border-radius:50px;
+            text-align:center;
+            font-size:30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index:100;
+        }
+
+        .my-float{
+            margin-top:16px;
+        }       
+    </style>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <a href="https://api.whatsapp.com/send?phone=556199771312" class="floatWhatsapp" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
+    <a href="https://www.instagram.com/emporiodamatarestaurante" class="floatInstagram" target="_blank">
+        <i class="fa fa-instagram my-float"></i>
+    </a>
+
+    <div class="navbar">
+            <a href="https://linktr.ee/emporiodamata"><img src="EM_logo.png" width="225" height="90" class="logo"></a>
+    </div>
+    <p></p>
+    <div class="main">
+<!--
+        <button class="accordion">Dia dos Namorados</button>
+        <div class="panel">
+            <div class="colunaPrato">                    
+                <p class="prato">DRINKS</p>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">815 - Kir Royal</p>
+                    <p class="descricao">Espumante com Licor de Cassis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">32,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">818 - Aperol Spritz</p>
+                    <p class="descricao">Aperol, Espumante e Água com Gás</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">32,00</p>
+                </div>
+            </div>
+            <div class="colunaPrato">                    
+                <p class="prato">DRINKS SEM ÁLCOOL</p>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">820 - Moranja</p>
+                    <p class="descricao">Morango, Suco de Laranja e Água com Gás</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">827 - Siciliano</p>
+                    <p class="descricao">Limão Siciliano, Mel e Água com Gás</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>
+            <div class="colunaPrato">                    
+                <p class="prato">ENTRADINHAS</p>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">119 - Creme de Aspargos</p>
+                    <p class="descricao">Acompanha torradinhas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">38,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">111 - Nordestino</p>
+                    <p class="descricao">Queijo coalho grelhado, alho crocante, geléia de pimenta e manjericão frito</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">51,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">112 - Filézinho Rústico</p>
+                    <p class="descricao">Tiras de filé aceboladas com molho rústico picante. Acompanha pães</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">57,00</p>
+                </div>
+            </div> 
+            <div class="colunaPrato">                    
+                <p class="prato">PRATO PRINCIPAL</p>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">349 - Risoto Tomate Seco</p>
+                    <p class="descricao">Arroz arbóreo preparado com tomate seco, mussarela de búfala e rúcula</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">64,00</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">362 - Risoto Veggie de Beterraba</p>
+                    <p class="descricao">Arroz arbóreo preparado com calda de beterraba e castanha de caju picada. Acompanhado de Cogumelos Paris grelhados e flambados</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">64,00</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">454 - Italiano</p>
+                    <p class="descricao">Filé grelhado ao molho de vinho tinto, servido com arroz cremoso de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">89,00</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">455 - Poivre Vert</p>
+                    <p class="descricao">Filé grelhado com molho de pimenta do reino verde, servido com arroz à parmegiana</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">91,00</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">354 - Risoto de Morango com Filé ao Brie</p>
+                    <p class="descricao">Risoto de morangos, com filé grelhado ao molho de queijo Brie</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">94,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">512 - Verde e Vermelho</p>
+                    <p class="descricao">Filé de pescada amarela grelhado servido no leite de rúcula, ao molho de creme de leite fresco e tomate seco. Acompanhado de arroz de amêndoas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">95,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">602 - Camarão ao Molho de Champanhe</p>
+                    <p class="descricao">Camarões ao molho de champanhe, creme de leite fresco, lascas de maçã verde e palmito. Servido com arroz de uva passa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">131,00</p>
+                </div>
+            </div>
+            <div class="colunaPrato">                    
+                <p class="prato">SOBREMESA</p>
+            </div>
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">669 - Mousse Chocolate</p>
+                    <p class="descricao">Mousse de chocolate com licor de cacau, servido com raspas de cholocate meio amargo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">31,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">655 - Petit Juju</p>
+                    <p class="descricao">Bolinho cremoso de chocolate servido com sorvete de creme e calda de chocolate meio amargo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">46,00</p>
+                </div>
+            </div>           
+        </div>
+-->
+        <!-- <button class="accordion">Semana Santa</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">3021 - Bacalhau com Arroz de Brócolis</p>
+                    <p class="descricao">Bacalhau em lascas, cebola e azeitona preta, no arroz de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">71,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">3032 - Batalhoada (2 a 3 pessoas)</p>
+                    <p class="descricao">Batata, cebola, pimentão amarelo e vermelho, brócolis, palmito, azeitona preta e ovo cozido. Servido com arroz branco</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">88,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">509 - Bacalhau do Empório</p>
+                    <p class="descricao">Bacalhau do Porto, posta alta, grelhado no azeite extra virgem, com cebola, azeitona preta e batata sautê. Servido com arroz de cogumelos selvagens</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">135,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">516 - Bacalhau em Natas (2 a 3 pessoas)</p>
+                    <p class="descricao">Bacalhau em lascas com batatas, cebola, alho porró, creme de natas e parmesão. Servido com folhas verdes orgânicas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">171,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">513 - Bacalhau à Portuguesa (2 a 3 pessoas)</p>
+                    <p class="descricao">Bacalhau em lascas com batata, cebola, pimentão vermelho e amarelo, azeitona preta e ovo cozido. Acompanha arroz de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">171,00</p>
+                </div>
+            </div>            
+        </div> -->
+
+        <button class="accordion">De Terça a Sexta - Exceto Feriados</button>
+        <div class="panel">
+            <div class="colunaPrato">                    
+                <p class="prato">NOVIDADES</p>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">050 - Moqueca de Peixe (2 a 3 pessoas)</p>
+                    <p class="descricao">Filé de pescada amarela. Acompanha arroz branco, farofa de dendê e pirão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">215,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">051 - Moqueca de Camarão (2 a 3 pessoas)</p>
+                    <p class="descricao">Acompanha arroz branco, farofa de dendê e pirão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">249,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">052 - Moqueca Mista (2 a 3 pessoas)</p>
+                    <p class="descricao">Filé de pescada amarela e camarão. Acompanha arroz branco, farofa de dendê e pirão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">265,00</p>
+                </div>
+            </div>    
+
+        <!--
+
+            <div class="colunaPrato">                    
+              <p class="prato">472 - MENU EXECUTIVO</p>
+              <p class="descricao"><b>Salada ou Petisco do dia + 01 Prato Principal + Sobremesa do dia</b></p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">59,00</p>
+            </div>
+
+            <div class="colunaPrato">                    
+                <p class="prato">OPÇÕES DOS PRATOS PRINCIPAIS:</p>
+            </div>
+    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">473 - Paillard de Mignon</p>
+                    <p class="descricao">Acompanha linguini ao pomodoro ou no azeite, alho e ervas</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">474 - Paillard de Frango</p>
+                    <p class="descricao">Acompanha linguini ao pomodoro ou no azeite, alho e ervas</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">475 - Linguini ao Cogumelo Paris</p>
+                    <p class="descricao">Acompanha linguini ao azeite, alho e ervas</p>
+                </div>
+            </div>       
+            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">476 - Espetinho de Mignon com Bacon</p>
+                    <p class="descricao">Acompanha arorz branco, feijão tropeiro e vinagrete</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">477 - Espetinho de Frango com Cebola</p>
+                    <p class="descricao">Acompanha arorz branco, feijão tropeiro e vinagrete</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">478 - Espetinho Vegano</p>
+                    <p class="descricao">Cogumelo paris, abobrinha, cebola, pimentão, tomatinho. Acompanha arroz branco, feijão tropeiro e vinagrete.</p>
+                </div>
+            </div>                
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">479 - Estrogonofe de Mignon</p>
+                    <p class="descricao">Acompanha arroz branco e bata palha da casa</p>
+                </div>
+            </div>                
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">480 - Estrogonofe de Frango</p>
+                    <p class="descricao">Acompanha arroz branco e bata palha da casa</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">481 - Estrogonofe Vegetariano</p>
+                    <p class="descricao">Com Paris fresco e Champignon. Acompanha arroz branco e bata palha da casa</p>
+                </div>
+            </div>             
+        -->
+        </div>        
+
+        <button class="accordion">Aos Sábados - Almoço</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">060 - Buffet de Feijoada</p>
+                    <p class="descricao">Feijoada artesanal servida em buffet com todas as carnes separadas. Arroz branco,
+                        feijão preto, carnes de porco, charque, linguiças calabresa e paio, farofa com bacon,
+                        couve orgânica, torresmo, laranja, caldinho de feijão e banana
+                        à milanesa, batidinhas de limão e de maracujá</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">85,00</p>
+                </div>
+            </div>
+        </div>
+
+<!-- 
+        <button class="accordion">Belisquetes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">117 - Frango a Passarinho</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">28,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">100 - Antepastos</p>
+                    <p class="descricao">Servido com pães de fermentação natural</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">33,00</p>
+                </div>
+            </div>                     
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">120 - Escondidinho de Mandicoa com Carne Seca</p>
+                    <p class="descricao">Servido com mix de folhas verdes orgânicas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">35,00</p>
+                </div>
+            </div>             
+    
+        </div>
+-->
+<!--
+        <button class="accordion">Caldos e Cremes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">121 - Caldinho de Feijão</p>
+                    <p class="descricao">Com Torresminho</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">13,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">359 - Caldo Verde</p>
+                    <p class="descricao">Com ou sem Calabresa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">30,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">118 - Canja</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">30,00</p>
+                </div>
+            </div>                     
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">119 - Creme de Aspargo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">36,00</p>
+                </div>
+            </div>             
+        </div>        
+-->
+        <button class="accordion">Beliscos</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">102 - Batata Frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">27,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">103 - Encanto de queijo</p>
+                    <p class="descricao">Pasteizinhos artesanais recheados com queijo mozarela e orégano</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">27,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">365 - Encanto de carne</p> <!--- <font color="red"><i>Indisponível</i></font>-->
+                    <p class="descricao">Pasteizinhos artesanais recheados com carne moída e azeitonas verdes</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">27,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">366 - Bolinho de Arroz</p>
+                    <p class="descricao">Acompanha geleia de pimenta da casa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">29,00</p>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">371 - Encanto de Bacalhau</p>
+                    <p class="descricao">Pasteizinhos artesanais recheados com bacalhau e azeitonas pretas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">32,00</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">107 - Fuga das Galinhas</p>
+                    <p class="descricao">Tiras de filé de frango empanadas com gergelins branco e preto, servidas com molho barbecue</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">31,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">106 - Brusqueta Cassé</p>
+                    <p class="descricao">Pães, mozarela, tomate concassé, manjericão e azeite</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">31,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">108 - Isca de Peixe</p>
+                    <p class="descricao">Empanada com gergelin branco e preto, servida com molho tártaro da casa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">36,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">115 - Linguiça de Pernil Apimentada</p>
+                    <p class="descricao">Com cebola e flambada na cachaça de alambique. Servida com pães</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">38,00</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">111 - Nordestino</p> <!--- <font color="red"><i>Indisponível</i></font>-->
+                    <p class="descricao">Queijo coalho grelhado, servido com alho crocante e manjericão frito. Acompanha
+                        geleia de pimenta da casa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">51,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">112 - Filezinho Rústico</p>
+                    <p class="descricao">Filé em cubos acebolado ao molho rústico suavemente picante. Acompanha pães</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">57,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">114 - Bolinho de Bacalhau Artesanal</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">59,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">264 - Camarão Empanado</p>
+                    <p class="descricao">Ao molho oriental (12 unidades)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">64,00</p>
+                </div>
+            </div>   
+        </div>
+
+        <button class="accordion">Entradas</button>
+        <div class="panel">
+        <!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">203 - Salada do Empório (2 pessoas)</p>
+                    <p class="descricao">Mix de folhas verdes com cobertura de carpaccio, molho de mostarda e parmesão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">43,00</p>
+                </div>
+            </div>
+        -->    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">211 - Saladita (2 pessoas)</p>
+                    <p class="descricao">Folhas orgânicas, tomatinhos confit, lascas de parmesão e azeitona preta servida com molho de mostarda e mel</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">58,00</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <button class="accordion">Infantil</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">400 - Frango</p>
+                    <p class="descricao">Filé de frango grelhado ou empanado, arroz branco e batata frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">33,00</p>
+                </div>
+            </div>           
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">369 - Linguini Pomodoro</p>
+                    <p class="descricao">Massa fresca artesanal com molho de tomates, feito na casa, e manjericão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">33,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">450 - Carne</p>
+                    <p class="descricao">Filé grelhado, arroz branco e batata frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">39,00</p>
+                </div>
+            </div>             
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">500 - Peixe</p>
+                    <p class="descricao">Filé de peixe empanado, arroz de brócolis e batata frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">43,00</p>
+                </div>
+            </div>            
+        </div>
+
+        <button class="accordion">Vegano e Vegetarianos</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">262 - Espaguete de Abobrinha</p>
+                    <p class="descricao">Espaguete de abobrinha ao molho de tomate e manjericão. Não contém farinha de trigo nem derivados de leite</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">39,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">368 - Linguini ao Cogumelo</p>
+                    <p class="descricao">Massa fresca artesanal salteada no azeite e alho, servida com cogumelos paris grelhados e flambados</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">48,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">351 - Risoto Selvagem</p>
+                    <p class="descricao">Arroz arbóreo preparado ao caldo de legumes orgânicos com cogumelos selvagens frescos: shitake, shimeji e paris. Não contém farinha de trigo nem derivados de leite</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">69,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">3032 - Batalhoada (2 a 3 pessoas)</p>
+                    <p class="descricao">Batata, cebola, pimentão amarelo e vermelho, brócolis, palmito, azeitona preta e ovo cozido. Servido com arroz branco</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">98,00</p>
+                </div>
+            </div>                       
+        </div>
+
+        <button class="accordion">Massas</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">368 - Linguini ao Cogumelo</p>
+                    <p class="descricao">Massa fresca artesanal, preparada na casa, salteada no azeite e alho, servida com cogumelos paris
+                        grelhados e flambados</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">48,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">250 - É o Bicho</p>
+                    <p class="descricao">Fetuccine fresco artesanal, preparado na casa, com payard ao molho triplo burro</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">78,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Massas Recheadas</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">300 - Sublime</p>
+                    <p class="descricao">Ravioli - Massa fresca artesanal, preparada na casa, recheada de mussarela, servido com molho de tomate e manjericão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">53,00</p>
+                </div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">613 - Ravioli dos Sonhos</p>
+                    <p class="descricao">Massa fresca artesanal, da casa, recheada de damasco, ricota defumada e provolone, ao molho de alho porró, creme de leite fresco e nozes</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">58,00</p>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <button class="accordion">Risotos</button>
+        <div class="panel">
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">350 - Lapião e Maria Bonita</p>
+                    <p class="descricao">Arroz arbóreo com carne seca desfiada, quibebe, cebola e gorgonzola</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">61,00</p>
+                </div>
+            </div>             -->
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">351 - Risoto Selvagem</p>
+                    <p class="descricao">Arroz arbóreo preparado no caldo de legumes orgânicos com cogumelos selvagens frescos: shitake, shimeji e paris. Não contém farinha de trigo nem derivados de leite</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">69,00</p>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">234 - Risoto Rústico</p>
+                    <p class="descricao">Arroz arbóreo preparado no caldo de legumes orgânicos, filé mignon em cubos e cebolas ao molho rústico suavemente picante</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">78,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">352 - Risoto de Bacalhau</p>
+                    <p class="descricao">Arroz arbóreo preparado no caldo de legumes orgânicos, bacalhau em lascas regado no
+                        azeite extra virgem, com cebola, azeitona preta e um leve refogado de tomate cereja</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">86,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">353 - Do Mar</p>
+                    <p class="descricao">Arroz arbóreo preparado no caldo de legumes orgânicos, com camarão aopomodoro,
+                        pimenta dedo-de-moça e salsinha</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">92,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Aves</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">304 - Frango à Parmegiana (2 a 3 pessoas)</p>
+                    <p class="descricao">3 pedaços de filé de frango à parmegiana servido com arroz branco e batata frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">116,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Frutos do Mar</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">600 - Camarão do Empório</p>
+                    <p class="descricao">Camarão ao molho de alho porró, cebola, mostarda e açafrão, servido com fetuccine
+                        fresco na manteiga</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">128,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">601 - Canoa Furada</p>
+                    <p class="descricao">Camarão ao molho de mostarda, alho porró e cubos de abacaxi, servido dentro do abacaxi, com arroz branco e batata palha</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">142,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Carnes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">463 - Picadinho do Empório</p>
+                    <p class="descricao">Filé em cubos ao molho de cerveja preta, servido com farofa de banana na manteiga e arroz branco</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">75,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">453 - Empório da Mata</p>
+                    <p class="descricao">Filé grelhado servido com alho crocante, batata “chips” e arroz à piamontese</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">89,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">456 - Do Cheff</p>
+                    <p class="descricao">Filé grelhado servido sob queijo brie gratinado, com mel e arroz de amêndoas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">91,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">457 - Novidade</p>
+                    <p class="descricao">Filé grelhado ao molho de queijo ementhal e ervas de Provence, servido com arroz no próprio molho</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">94,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">303 - Filé à Parmegiana (2 a 3 pessoas)</p>
+                    <p class="descricao">3 pedaçõs de filé à parmegiana servido com arroz branco e batata frita</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">166,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Peixes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">511 - Pescada em Crosta de Castanha</p>
+                    <p class="descricao">Filé de pescada amarela grelhado em crosta de castanha, servido com espaguete de abobrinha ao pesto e tomatinho confit. Não contém farinha de trigo nem derivados de leite.</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">85,00</p>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">502 - Salmão à Belle Meuniere</p>
+                    <p class="descricao">Filé de salmão grelhado servido com camarão, alcaparra, champignon e batata sautê salteados na manteiga acompanhado de arroz cremoso</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">105,00</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">506 - Marrakesh</p>
+                    <p class="descricao">Filé de pescada amarela grelhado servido sobre o colchão de tomate cereja, alho e manjericão, com manteiga de cúrcuma. Acompanha risoto de açafrão com queijo ementhal</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">91,00</p>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">507 - Super Requinte</p>
+                    <p class="descricao">Filé de pescada amarela grelhada ao molho de camarão, champignon, amêndoas, creme de leite fresco. Acompanha arroz no próprio molho</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">95,00</p>
+                </div>
+            </div>
+<!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">515 - Salmão Defumado</p>
+                    <p class="descricao">Escalopinho de salmão defumado grelhado, servido ao molho de mostarda. Acompanha arroz de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">85,00</p>
+                </div>
+            </div>
+-->
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">3021 - Bacalhau com Arroz de Brócolis</p>
+                    <p class="descricao">Bacalhau em lascas, cebola e azeitona preta, no arroz de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">82,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">509 - Bacalhau do Empório</p>
+                    <p class="descricao">Bacalhau do Porto, posta alta, grelhado no azeite extra virgem, com cebola, azeitona preta e batata sautê. Servido com arroz de cogumelos selvagens</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">159,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">516 - Bacalhau em Natas (2 a 3 pessoas)</p>
+                    <p class="descricao">Bacalhau em lascas com batatas, cebola, alho porró, creme de natas e parmesão. Servido com folhas verdes orgânicas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">188,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">513 - Bacalhau à Portuguesa ao Forno (2 a 3 pessoas)</p>
+                    <p class="descricao">Bacalhau em lascas com batata, cebola, pimentão vermelho e amarelo, azeitona preta e ovo cozido. Acompanha arroz de brócolis</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">188,00</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <button class="accordion">Sobremesas</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">651 - Pudim de Leite</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">21,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">652 - Sorvete de creme com calda de chocolate</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">26,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">665 - Pavê Paulista</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">25,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">655 - Petit Juju</p>
+                    <p class="descricao">Bolinho cremoso de chocolate servido com sorvete de creme e calda de chocolate meio amargo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">46,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">656 - Taça Alpina</p>
+                    <p class="descricao">Mousse de chocolate branco, mousse de chocolate preto, sorvete de creme, calda de chocolate meio amargo, chantilly e castanha de caju</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">48,00</p>
+                </div>
+            </div>
+
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">662 - Doces Mineiros (2 pessoas)</p>
+                    <p class="descricao">Doces Mineiros com Queijo da Canastra</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">35,00</p>
+                </div>
+            </div> -->
+
+
+        </div>
+
+
+
+
+
+        <!-- <button class="accordion">Sorvetes e Picolés (Vai Bem)</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">381 - Picolé Galeguinho</p>
+                    <p class="descricao">Limão: Esse é para quem gosta de arrepio e refrescância na medida certa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">12,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">389 - Picolé Beijo Doce</p>
+                    <p class="descricao">Coco com brigadeiro: Aquele beijinho doce que tem sabor e alegria, uma mistura de coco com brigadeiro, pra trazer aquele gostinho de beijo docinho</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">15,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">390 - Picolé Biscoito ou Bolacha?</p>
+                    <p class="descricao">Oreo: Aquele picolé de Oreo, pra descontrair com a galera pra saber se é biscoito ou bolacha? Pra gente tanto faz, é delicioso e crocante</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">15,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">391 - Picolé Mr. Brownie</p>
+                    <p class="descricao">Chocolate com pedaços de Mr. Brownie: Tudo que você mais sonho em um picolé. Se você ama brownie, esse é o melhor</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">15,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">388 - Picolé Meu Bem</p>
+                    <p class="descricao">Morango com Leite condensado: O líder da casa! Esse faz tremer as pernas, o coração e os sentidos! Refrescante e saboroso na medida certa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">15,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">396 - Sorvete Praia Vermelha</p>
+                    <p class="descricao">Esse sorvete além de vegano, te leva pra surfar pra um mar de sabores, nas ondas das frutas vermelhas</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">17,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">393 - Sorvete Mr. Brownie</p>
+                    <p class="descricao">Carro chefe das delicias do brownie de chocolate. Esse é gol na certa</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">17,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">470 - Sorvete Açaí com Banana</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">17,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">471 - Sorvete Açaí com Guaraná</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">17,00</p>
+                </div>
+            </div>
+
+
+        </div> -->
+
+
+
+
+        <button class="accordion">Café</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">710 - Café Expresso - Gourmet</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">7,00</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Licores</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">701 - Contreau</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">23,00</p>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">703 - Cuarenta y tres</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">28,00</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <button class="accordion">Vinho do Porto</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">831 - Adriano (Cálice)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">25,00</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <button class="accordion">Água</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">735 - Água Mineral Prata (c/ gás)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">10,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">736 - Água Mineral Prata (s/ Gás)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">10,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">738 - Água de Coco Natural (copo)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">739 - Água de Coco Natural (jarra)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">347 - Shot de Limão</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">3,50</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="accordion">Refrigerantes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">720 - Coca-cola</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">721 - Coca-cola Zero</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">726 - Guaraná Antártica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">727 - Guaraná Antártica Diet</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">728 - Schweppes Citrus</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">729 - Schweppes Tônica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div>                                        
+        </div>    
+
+        <button class="accordion">Sucos</button>
+        <div class="panel">
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">7020 - Suco de Uva Gaseificado - Aurora 275ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">11,00</p>
+                </div>
+            </div>
+
+            <div class="colunaPrato">                    
+                <p class="prato">Naturais</p>
+            </div>            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">740 - Copo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">9,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">742 - Copo (Frutas Especiais)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">13,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">743 - Jarra</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">745 - Jarra (Frutas Especiais)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">18,00</p>
+                </div>
+            </div>    
+        </div>        
+
+        <button class="accordion">Cervejas</button>
+        <div class="panel">
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">750 - Bohemia 355ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div> -->
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">753 - Brahma Zero 355ml</p>
+                    <p class="descricao">Sem álcool</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">8,00</p>
+                </div>
+            </div> -->
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">779 - Heineken 250ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">9,00</p>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">803 - Stella Artois 330ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">12,00</p>
+                </div>
+            </div>           
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">804 - Stella Artois 330ml</p>
+                    <p class="descricao">Sem Glúten </p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">12,00</p>
+                </div>
+            </div>           
+
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">773 - Heineken 330ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">774 - Heineken Zero 330ml</p>
+                    <p class="descricao">Sem álcool</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">754 - Cerpa Export 350ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>    
+<!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">764 - Therezópolis Gold 500ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">22,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">765 - Therezópolis Rubine 600ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">22,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">781 - Therezópolis Ebenholz 600ml</p>
+                    <p class="descricao">Escura</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">22,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">766 - Therezópolis Elfenbein 600ml</p>
+                    <p class="descricao">Trigo</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">780 - Therezópolis Jade 600ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>    
+-->
+        </div>    
+
+
+        <button class="accordion">Cervejas Artesanais - Cerrado Beer</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">7050 - Seriema - Pilsner 500ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">34,90</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">7051 - Morcego - Ipa 500ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">34,90</p>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">7052 - Lobo Guará - Double Ipa 500ml</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">34,90</p>
+                </div>
+            </div> 
+        </div>    
+
+        <button class="accordion">Caipirinhas & Caipiroskas</button>
+        <div class="panel">
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">788 - Caypioca</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">20,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">790 - Cachaça 51</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">16,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">792 - Cachaça Especial</p>
+                    <p class="descricao">Biquinha ou Canarinha</p>
+
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">29,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">796 - Vodka Smirnoff</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">25,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">797 -Vodka Smirnoff (Frutas Especiais)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">30,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">798 - Vodka Importada</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">33,00</p>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">799 - Vodka Importada (Frutas Especiais)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">38,00</p>
+                </div>
+            </div>                                        
+        </div>       
+
+
+        <button class="accordion">Cachaças</button>
+        <div class="panel">
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">884 - Cachaça de Alambique</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">12,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">875 - Seleta</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">12,00</p>
+                </div>
+            </div>
+<!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">879 - Do Ministro</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">14,00</p>
+                </div>
+            </div>
+-->
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">880 - Biquinha</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">23,00</p>
+                </div>
+            </div>
+<!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">882 - Vale Verde</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">17,00</p>
+                </div>
+            </div>            
+-->
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">881 - Canarinha</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">23,00</p>
+                </div>
+            </div>
+        </div>          
+
+
+
+
+        <button class="accordion">Drinks Sem Álcool</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">823 - Mojito</p>
+                    <p class="descricao">Limão, Hortelã, Açúcar e Água com Gás ou Tônica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">20,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">820 - Moranja</p>
+                    <p class="descricao">Morango, Laranja e Água com Gás ou Tônica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">821 - Tropical</p>
+                    <p class="descricao">Melancia, Limão, Canela e Água com Gás ou Tônica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">22,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">822 - Zanzibar</p>
+                    <p class="descricao">Limão, Canela, Mel e Água com Gás ou Tônica</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">25,00</p>
+                </div>
+            </div>
+        </div>     
+
+
+
+
+        <button class="accordion">Coqueteis e Drinks</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">813 - Mojito</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">26,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">814 - Blood Mary</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">28,00</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">815 - Kir Royal (Prosecco com Cassis)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">32,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">818 - Aperol Spritz</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">32,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">819 - Gin Tônica Importada</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">34,00</p>
+                </div>
+            </div>
+        </div>     
+
+        <button class="accordion">Aperitivos</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">843 - Campari</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">18,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">844 - Vodka Smirnoff</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">18,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">849 - Vodka Importada</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">28,00</p>
+                </div>
+            </div>
+        </div>   
+        
+        <button class="accordion">Whiskies</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">865 - Johnnie Walker (8 anos)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">24,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">868 - Johnnie Walker (12 anos)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">30,00</p>
+                </div>
+            </div>
+        </div>    
+
+        <button class="accordion">Espumantes</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">895 - Casa Valduga Arte - Demi Sec</p> 
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">89,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">896 - Casa Valduga Nature - Moscatel</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">89,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">897 - Fausto - Brut</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">123,00</p>
+                </div>
+            </div>            
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">894 - Chandon Passion - Rose</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">124,00</p>
+                </div>
+            </div>             -->
+        </div>    
+
+        <button class="accordion">Vinho Branco</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">925 - Robertson - Chenin Blanc (África do Sul)</p> <!-- - <font color="red"><i>Indisponível</i></font>-->
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">102,00</p>
+                </div>
+            </div>               
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">929 - Trofeo - Chardonnay (Chile)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">98,00</p>
+                </div>
+            </div>               
+
+        <!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">905 - Uxmal - Chardonnay (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">107,00</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">906 - Leonardo - Torrontes (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">112,00</p>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">908 - Terra Andina - Sauvignon Blanc (Chile)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">97,00</p>
+                </div>
+            </div>               
+        -->
+        </div>
+
+        <button class="accordion">Vinho Rosé</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">1005 - Fausto - Merlot (Brasil)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">105,00</p>
+                </div>
+            </div>            
+        <!--
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">919 - Vito Rosado - Syrah (Itália)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">91,00</p>
+                </div>
+            </div>            
+        -->
+        </div>
+
+        <button class="accordion">Vinho Tinto</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">920 - Tília - Malbec Syrah (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">141,00</p>
+                </div>
+            </div>      
+            <!--      
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">927 - Alamos - Malbec (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">123,00</p>
+                </div>
+            </div>
+            -->            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">901 - La Posta - Malbec Blend (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">157,00</p>
+                </div>
+            </div>  
+            
+            
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">1003 - Fausto - Tannat (Brasil)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">104,00</p>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">1004 - Trofeo - Carmenere (Chile)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">98,00</p>
+                </div>
+            </div>              
+
+            <!-- <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">936 - Carmem Classic - Cabernet Sauvignon (Chile)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">139,00</p>
+                </div>
+            </div>             -->
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">928 - Trofeo - Cabernet Sauvignon (Chile)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">104,00</p>
+                </div>
+            </div>                        
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">980 - Marquês de Aldaz - Grenache, Tempranillo e Merlot (Espanha)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">122,00</p>
+                </div>
+            </div>  
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">922 - Vito - Cabernet Sauvignon (Itália)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">125,00</p>
+                </div>
+            </div>    
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">924 - Robertson - Pinotage (África do Sul)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">115,00</p>
+                </div>
+            </div>    
+
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">970 - Irmãos Unidos - Baga, Touriga Nacional e Cabernet Sauvignon (Portugal)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">122,00</p>
+                </div>
+            </div>                                   
+        </div>                         
+
+<!--
+        <button class="accordion">Vinho Branco 1/2 Garrafa</button>
+        <div class="panel">
+            <div class="row">
+                <div class="colunaPrato">
+                    <p class="prato">975 - Alamos - Chardonnay (Argentina)</p>
+                </div>
+                <div class="colunaPreco">
+                    <p class="preco">65,00</p>
+                </div>
+            </div>            
+        </div>        
+    </div>
+-->
+    <button class="accordion">Vinho Tinto 1/2 Garrafa</button>
+    <div class="panel">
+<!--
+        <div class="row">
+            <div class="colunaPrato">
+                <p class="prato">985 - Terra Andina - Cabernet Sauvignon (Chile) - <font color="red"><i>Indisponível</i></font></p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">49,00</p>
+            </div>
+        </div>            
+-->
+        <div class="row">
+            <div class="colunaPrato">
+                <p class="prato">1002 - Fausto - Cabernet Sauvignon (Brasil)</p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">64,00</p>
+            </div>
+        </div>            
+
+        <!-- <div class="row">
+            <div class="colunaPrato">
+                <p class="prato">985 - Terra Andina - Carménère (Chile)</p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">79,00</p>
+            </div>
+        </div>             -->
+    </div>    
+
+    
+    <button class="accordion">Vinho Tinto 187ml</button>
+    <div class="panel">
+        <div class="row">
+            <div class="colunaPrato">
+                <p class="prato">1001 - Fausto (Brasil)</p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">36,00</p>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="colunaPrato">
+                <p class="prato">990 - Tília - Malbec/Syrah (Argentina)</p>
+            </div>
+            <div class="colunaPreco">
+                <p class="preco">53,00</p>
+            </div>
+        </div>            
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
